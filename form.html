@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Form validation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style type="text/css">
+      body {font-size: 20px }
+      form{border: 2px solid #4f7371;
+        width: 50%;
+        padding: 10px;
+      }
+      .tp{
+        display: block;
+        margin-right:auto;
+        margin-left:auto;
+      }
+      h5{color:red;}
+  </style>
+  </head>  
+  <body>
+      <h2 class="text-center tp" style="background: #3dddf2">Form Validation</h2>
+      <form class="tp">
+        <div class="form-group">
+          <label>First Name:</label>
+          <input type="text" class="form-control" id="fname" placeholder="Enter First name">
+          <h5 id="ffname"></h5>
+        </div>
+        <div class="form-group">
+          <label>Last name:</label>
+          <input type="text" class="form-control" id="lname" placeholder="Enter Last name">
+          <h5 id="llname"></h5>
+        </div>
+        <div class="form-group">
+          <label>Email:</label>
+          <input type="email" class="form-control" id="email" placeholder="Enter Email ">
+          <h5 id="eemail"></h5><h5 id="eemaill"></h5>
+        </div>        
+        <div class="form-group">
+          <label>User id:</label>
+          <input type="text" class="form-control" id="uid" placeholder="Enter User id">
+          <h5 id="uuid"></h5>
+        </div>
+        <div class="form-group">
+          <label>Password:</label>
+          <input type="password" class="form-control" id="pass" placeholder="Enter Password">
+          <h5 id="ffpass"></h5>
+        </div>
+        <div class="form-group">
+          <label>Confirm password:</label>
+          <input type="password" class="form-control" id="pass1" placeholder="Enter confirm Password">
+          <h5 id="ccpass"></h5>
+        </div>
+      </form><br>
+      <button  onclick="myFunction()" class="btn tp" style="background:#3dddf2"><b> Submit </b></button>
+    <script type="text/javascript">         
+          function myFunction() {
+            var a=document.getElementById("fname");
+            var b=document.getElementById("lname");
+            var c=document.getElementById("email");
+            var d=document.getElementById("uid");
+            var e=document.getElementById("pass");
+            var f=document.getElementById("pass1");
+            if(a.value=="") {
+              document.getElementById("ffname").innerHTML = "* Enter the first name";
+              a.focus();
+            }
+            else if((b.value=="")){
+              document.getElementById("llname").innerHTML = "* Enter the lastname";
+              b.focus();
+             }
+            else if((c.value=="")){
+                mail();
+                c.focus();
+             }
+            else if((d.value=="")){
+                document.getElementById("uuid").innerHTML = "* Enter the Userid";
+                d.focus();
+            }
+            else if((e.value=="")){
+                document.getElementById("ffpass").innerHTML = "* Enter the Password";
+                e.focus();
+            }
+            else if((f.value=="")){
+                document.getElementById("ccpass").innerHTML = "* Enter the confirm Password";
+                f.focus();
+            } 
+            else if((f.value!=e.value)){
+               document.getElementById("ccpass").innerHTML = "* Password does not match";
+               f.focus();
+            } 
+            else{
+                mail();
+                document.getElementById("ccpass").innerHTML = "";
+            }
+            //clear Text
+            if(a.value!="")document.getElementById("ffname").innerHTML = "";
+            if(b.value!="")document.getElementById("llname").innerHTML = "";            
+            if(c.value!="")document.getElementById("eemail").innerHTML = "";          
+            if(d.value!="")document.getElementById("uuid").innerHTML = "";
+            if(e.value!="")document.getElementById("ffpass").innerHTML = "";
+        }
+         //email validate
+          function mail(){
+            var c=document.getElementById("email");
+            var mai=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            if(c.value.match(mai)){ 
+                document.getElementById("eemaill").innerHTML = "";
+                alert("Successfully Created");
+            }
+            else{
+                document.getElementById("eemaill").innerHTML = "* Please Enter Valid Email id <br>Exp:demoemail@gmail.com ";
+                c.focus();
+            }
+          }
+    </script>
+  </body>
+</html>
